@@ -1,5 +1,7 @@
 # Rated for Whom? Auditing Neighborhood Safety Scores in Charlotte
 
+## D1:
+
 This D2 project examines how reported incident data, geographic assignment, time windows and offense definitions can affect what a neighborhood safety score appears to show. It keeps the Charlotte-Mecklenburg Police Department incident records and the published violent-crime summary separate because their geography, time basis, and offense definitions have not been verified as comparable.
 
 The project reports descriptive counts. It does not create safety grades, label areas safe or unsafe, estimate unobserved population values or claim that reported counts measure all crime.
