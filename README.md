@@ -6,7 +6,7 @@ The project reports descriptive counts. It does not create safety grades, label 
 
 ## D2 deliverables
 
-- [Data note (PDF)](D2_data_note.pdf) and [editable Markdown source](D2_data_note.md)
+- [Data Report (PDF)](D2_Report.pdf)
 - [Data-preparation code and documentation](data_preparation/)
 - [Source-audit code and report](source_audit/)
 - [Exploratory plots and interpretations](d2_eda/D2_EDA_report.md)
