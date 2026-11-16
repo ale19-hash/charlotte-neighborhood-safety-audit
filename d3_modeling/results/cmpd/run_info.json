@@ -1,0 +1,66 @@
+{
+  "source": "CMPD incident reports (all highest classifications)",
+  "selected_model": "baseline_last_year",
+  "best_cv_mae_model": "baseline_last_year",
+  "tuned_params": {
+    "baseline_last_year": {},
+    "poisson_glm": {
+      "alpha": 1.0
+    },
+    "random_forest": {
+      "min_samples_leaf": 5,
+      "max_features": 0.5
+    },
+    "gradient_boosting": {
+      "learning_rate": 0.03,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20
+    }
+  },
+  "features": [
+    "log_lag1",
+    "log_lag2",
+    "log_lag3",
+    "log_mean3",
+    "log_hist_max",
+    "trend",
+    "lag2_missing",
+    "lag3_missing",
+    "years_observed",
+    "log_city_lag1",
+    "city_change"
+  ],
+  "rows_total": 3277,
+  "rows_dev": 2872,
+  "rows_test": 405,
+  "excluded_no_prior_year": {
+    "2018": 7,
+    "2019": 5,
+    "2020": 10,
+    "2021": 12,
+    "2022": 8,
+    "2023": 8,
+    "2024": 11,
+    "2025": 11
+  },
+  "npas_in_test": 405,
+  "city_total_2024": 92216,
+  "city_total_2025": 91226,
+  "top_decile_k": 40,
+  "top_decile_crosstab": {
+    "false": {
+      "false": 362,
+      "true": 3
+    },
+    "true": {
+      "false": 3,
+      "true": 37
+    }
+  },
+  "tier_cutpoints_lag1": [
+    53.0,
+    111.0,
+    191.0,
+    300.8000000000002
+  ]
+}

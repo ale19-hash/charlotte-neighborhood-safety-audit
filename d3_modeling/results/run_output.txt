@@ -1,0 +1,149 @@
+
+===== Violent-crime NPA summary (broad Violent Crime count)
+selected: random_forest | tuned: {'baseline_last_year': {}, 'poisson_glm': {'alpha': 1.0}, 'random_forest': {'min_samples_leaf': 5, 'max_features': 0.5}, 'gradient_boosting': {'learning_rate': 0.03, 'max_leaf_nodes': 7, 'min_samples_leaf': 20}}
+rows dev/test: 2955 316 | excluded (no prior year): {2016: 30, 2017: 33, 2018: 36, 2019: 28, 2020: 17, 2021: 27, 2022: 23, 2023: 21, 2024: 20, 2025: 27}
+
+CV comparison folds (mean over years):
+                     mae_mean  rmse_mean  poisson_deviance_mean  bias_mean  spearman_mean  top10_overlap_mean  mae_se  folds_beating_baseline
+model                                                                                                                                       
+baseline_last_year     8.537     13.246                  6.540      0.141          0.817               0.673   0.361                       0
+poisson_glm            7.362     11.654                  4.337      1.176          0.874               0.753   0.281                       3
+random_forest          6.956     11.384                  4.444     -1.087          0.873               0.753   0.112                       3
+gradient_boosting      7.348     11.615                  4.530      0.497          0.870               0.753   0.062                       3
+
+Fold metrics:
+                  model  year    mae   bias  spearman
+0   baseline_last_year  2022  9.155  1.144     0.802
+1   baseline_last_year  2023  7.906  0.035     0.816
+2   baseline_last_year  2024  8.549 -0.756     0.832
+3    gradient_boosting  2022  7.415  0.980     0.866
+4    gradient_boosting  2023  7.404  0.814     0.860
+5    gradient_boosting  2024  7.225 -0.301     0.886
+6          poisson_glm  2022  6.809 -0.111     0.869
+7          poisson_glm  2023  7.550  2.463     0.867
+8          poisson_glm  2024  7.727  1.176     0.887
+9        random_forest  2022  7.050 -0.233     0.871
+10       random_forest  2023  6.733 -0.819     0.863
+11       random_forest  2024  7.083 -2.210     0.885
+
+2025 test:
+                         n    mae    rmse  poisson_deviance   bias  spearman  top10_overlap  mae_level_adjusted_diagnostic
+model                                                                                                                    
+baseline_last_year  316.0  9.671  15.242             7.235  4.709     0.785          0.625                          7.882
+poisson_glm         316.0  8.712  12.363             5.881  5.898     0.830          0.656                          6.771
+random_forest       316.0  7.409  11.187             4.878  2.939     0.828          0.719                          6.614
+gradient_boosting   316.0  8.313  12.328             5.538  4.480     0.822          0.688                          6.981
+
+Errors:
+            split           grouping               model                 group    n  mean_actual  mean_pred    mae   bias  median_pct_err
+0   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q1  227         4.44       2.18   2.85  -2.27            0.00
+1   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q2  163         9.78       6.95   5.94  -2.83           -0.12
+2   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q3  214        16.10      13.80   7.22  -2.30           -0.03
+3   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q4  205        21.85      25.22   9.47   3.38            0.23
+4   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q5  199        55.57      60.25  17.60   4.67            0.12
+5   cv_2022_2024  prior_volume_tier       random_forest                    Q1  227         4.44       4.09   2.57  -0.35            0.41
+6   cv_2022_2024  prior_volume_tier       random_forest                    Q2  163         9.78       8.63   4.92  -1.15            0.11
+7   cv_2022_2024  prior_volume_tier       random_forest                    Q3  214        16.10      14.34   6.20  -1.76           -0.02
+8   cv_2022_2024  prior_volume_tier       random_forest                    Q4  205        21.85      22.61   7.50   0.76            0.07
+9   cv_2022_2024  prior_volume_tier       random_forest                    Q5  199        55.57      52.58  13.87  -2.99           -0.01
+10  cv_2022_2024      actual_change  baseline_last_year             fell >25%  331        12.25      23.37  11.11  11.11            1.00
+11  cv_2022_2024      actual_change  baseline_last_year           within ±25%  351        27.39      27.84   3.54   0.45            0.00
+12  cv_2022_2024      actual_change  baseline_last_year             rose >25%  326        24.29      12.99  11.30 -11.30           -0.50
+13  cv_2022_2024      actual_change       random_forest             fell >25%  331        12.25      18.51   6.61   6.25            0.72
+14  cv_2022_2024      actual_change       random_forest           within ±25%  351        27.39      26.38   5.13  -1.01            0.03
+15  cv_2022_2024      actual_change       random_forest             rose >25%  326        24.29      15.71   9.27  -8.58           -0.32
+16  cv_2022_2024            history  baseline_last_year             full 3-yr  943        22.70      22.87   8.99   0.17            0.00
+17  cv_2022_2024            history  baseline_last_year  short (<3 prior yrs)   65         2.72       2.66   2.00  -0.06            0.00
+18  cv_2022_2024            history       random_forest             full 3-yr  943        22.70      21.53   7.30  -1.17            0.05
+19  cv_2022_2024            history       random_forest  short (<3 prior yrs)   65         2.72       3.04   1.91   0.32            0.67
+20  cv_2022_2024          fold_year  baseline_last_year                  2022  341        20.87      22.02   9.16   1.14            0.00
+21  cv_2022_2024          fold_year  baseline_last_year                  2023  339        20.99      21.03   7.91   0.04            0.00
+22  cv_2022_2024          fold_year  baseline_last_year                  2024  328        22.41      21.66   8.55  -0.76            0.00
+23  cv_2022_2024          fold_year       random_forest                  2022  341        20.87      20.64   7.05  -0.23            0.09
+24  cv_2022_2024          fold_year       random_forest                  2023  339        20.99      20.18   6.73  -0.82            0.08
+25  cv_2022_2024          fold_year       random_forest                  2024  328        22.41      20.20   7.08  -2.21            0.04
+26     test_2025  prior_volume_tier  baseline_last_year                    Q1   61         3.11       2.15   1.82  -0.97            0.00
+27     test_2025  prior_volume_tier  baseline_last_year                    Q2   53         8.08       6.91   4.45  -1.17            0.12
+28     test_2025  prior_volume_tier  baseline_last_year                    Q3   64        12.86      13.73   6.69   0.88            0.15
+29     test_2025  prior_volume_tier  baseline_last_year                    Q4   70        21.14      24.23  10.94   3.09            0.37
+30     test_2025  prior_volume_tier  baseline_last_year                    Q5   68        41.76      61.43  22.28  19.66            0.52
+31     test_2025  prior_volume_tier       random_forest                    Q1   61         3.11       3.71   2.22   0.60            0.62
+32     test_2025  prior_volume_tier       random_forest                    Q2   53         8.08       8.12   3.77   0.05            0.10
+33     test_2025  prior_volume_tier       random_forest                    Q3   64        12.86      14.34   5.97   1.48            0.26
+34     test_2025  prior_volume_tier       random_forest                    Q4   70        21.14      22.42   9.17   1.28            0.19
+35     test_2025  prior_volume_tier       random_forest                    Q5   68        41.76      52.14  14.44  10.38            0.26
+36     test_2025      actual_change  baseline_last_year             fell >25%  148        13.87      27.98  14.11  14.11            1.00
+37     test_2025      actual_change  baseline_last_year           within ±25%   94        24.98      25.45   3.45   0.47            0.00
+38     test_2025      actual_change  baseline_last_year             rose >25%   74        18.38       9.68   8.70  -8.70           -0.44
+39     test_2025      actual_change       random_forest             fell >25%  148        13.87      22.65   9.51   8.78            0.82
+40     test_2025      actual_change       random_forest           within ±25%   94        24.98      25.97   4.64   0.99            0.12
+41     test_2025      actual_change       random_forest             rose >25%   74        18.38      12.12   6.73  -6.26           -0.25
+42     test_2025            history  baseline_last_year             full 3-yr  299        19.11      24.09  10.11   4.98            0.28
+43     test_2025            history  baseline_last_year  short (<3 prior yrs)   17         2.71       2.71   1.88   0.00            0.00
+44     test_2025            history       random_forest             full 3-yr  299        19.11      22.19   7.73   3.08            0.25
+45     test_2025            history       random_forest  short (<3 prior yrs)   17         2.71       3.17   1.79   0.46            0.51
+
+info: {"city_total_2024": 7397, "city_total_2025": 5824, "top_decile_k": 32, "top_decile_crosstab": {"false": {"false": 275, "true": 9}, "true": {"false": 9, "true": 23}}, "tier_cutpoints_lag1": [4.0, 9.0, 18.0, 32.0]}
+
+===== CMPD incident reports (all highest classifications)
+selected: baseline_last_year | tuned: {'baseline_last_year': {}, 'poisson_glm': {'alpha': 1.0}, 'random_forest': {'min_samples_leaf': 5, 'max_features': 0.5}, 'gradient_boosting': {'learning_rate': 0.03, 'max_leaf_nodes': 7, 'min_samples_leaf': 20}}
+rows dev/test: 2872 405 | excluded (no prior year): {2018: 7, 2019: 5, 2020: 10, 2021: 12, 2022: 8, 2023: 8, 2024: 11, 2025: 11}
+
+CV comparison folds (mean over years):
+                     mae_mean  rmse_mean  poisson_deviance_mean  bias_mean  spearman_mean  top10_overlap_mean  mae_se  folds_beating_baseline
+model                                                                                                                                       
+baseline_last_year    27.129     47.517                  5.719     -5.961          0.983               0.919   0.177                       0
+poisson_glm           31.875     61.450                  7.173     -3.774          0.983               0.902   2.009                       0
+random_forest         33.140    113.862                  9.838    -13.590          0.983               0.911   1.876                       0
+gradient_boosting     36.255    144.508                 13.106     -8.902          0.983               0.911   0.805                       0
+
+Fold metrics:
+                  model  year     mae    bias  spearman
+0   baseline_last_year  2022  27.066 -11.355     0.981
+1   baseline_last_year  2023  27.463 -14.635     0.985
+2   baseline_last_year  2024  26.858   8.105     0.983
+3    gradient_boosting  2022  36.213  -9.917     0.981
+4    gradient_boosting  2023  37.670 -18.109     0.985
+5    gradient_boosting  2024  34.882   1.319     0.983
+6          poisson_glm  2022  31.126 -20.411     0.981
+7          poisson_glm  2023  28.831 -16.594     0.985
+8          poisson_glm  2024  35.669  25.683     0.983
+9        random_forest  2022  32.676 -16.615     0.981
+10       random_forest  2023  36.596 -25.998     0.984
+11       random_forest  2024  30.148   1.842     0.983
+
+2025 test:
+                         n     mae     rmse  poisson_deviance   bias  spearman  top10_overlap  mae_level_adjusted_diagnostic
+model                                                                                                                      
+baseline_last_year  405.0  26.731   45.502             5.312  2.415     0.984          0.925                         26.754
+poisson_glm         405.0  26.069   43.287             4.976  4.951     0.986          0.925                         25.803
+random_forest       405.0  29.107   93.785             6.647 -0.778     0.986          0.925                         29.174
+gradient_boosting   405.0  36.525  141.830            11.283  2.487     0.986          0.900                         36.355
+
+Errors:
+            split           grouping               model                 group     n  mean_actual  mean_pred    mae   bias  median_pct_err
+0   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q1   253        27.96      27.00   6.43  -0.95            0.00
+1   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q2   237        82.11      79.42  14.65  -2.69           -0.02
+2   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q3   247       154.52     150.06  22.29  -4.46           -0.03
+3   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q4   242       248.67     240.67  32.32  -8.00           -0.02
+4   cv_2022_2024  prior_volume_tier  baseline_last_year                    Q5   247       616.90     603.20  60.06 -13.70            0.00
+5   cv_2022_2024      actual_change  baseline_last_year             fell >25%    96        49.25      73.19  23.94  23.94            0.50
+6   cv_2022_2024      actual_change  baseline_last_year           within ±25%   963       252.49     250.76  23.91  -1.73            0.00
+7   cv_2022_2024      actual_change  baseline_last_year             rose >25%   167       175.93     128.43  47.50 -47.50           -0.29
+8   cv_2022_2024            history  baseline_last_year             full 3-yr  1207       229.68     223.63  27.54  -6.05           -0.02
+9   cv_2022_2024            history  baseline_last_year  short (<3 prior yrs)    19         1.74       1.68   0.79  -0.05            0.00
+10  cv_2022_2024          fold_year  baseline_last_year                  2022   409       218.93     207.57  27.07 -11.35           -0.03
+11  cv_2022_2024          fold_year  baseline_last_year                  2023   408       234.10     219.46  27.46 -14.63           -0.05
+12  cv_2022_2024          fold_year  baseline_last_year                  2024   409       225.43     233.53  26.86   8.11            0.05
+13     test_2025  prior_volume_tier  baseline_last_year                    Q1    80        25.35      25.21   6.59  -0.14            0.03
+14     test_2025  prior_volume_tier  baseline_last_year                    Q2    79        78.94      79.51  14.49   0.57            0.03
+15     test_2025  prior_volume_tier  baseline_last_year                    Q3    82       145.21     151.44  21.77   6.23            0.07
+16     test_2025  prior_volume_tier  baseline_last_year                    Q4    75       238.08     241.68  24.88   3.60            0.01
+17     test_2025  prior_volume_tier  baseline_last_year                    Q5    89       597.61     599.44  61.83   1.83            0.04
+18     test_2025      actual_change  baseline_last_year             fell >25%    46        70.87     102.30  31.43  31.43            0.46
+19     test_2025      actual_change  baseline_last_year           within ±25%   317       259.65     262.95  24.81   3.30            0.03
+20     test_2025      actual_change  baseline_last_year             rose >25%    42       134.40      98.36  36.05 -36.05           -0.26
+21     test_2025            history  baseline_last_year             full 3-yr   402       226.89     229.31  26.92   2.43            0.03
+22     test_2025            history  baseline_last_year  short (<3 prior yrs)     3         2.00       2.67   1.33   0.67            1.00
+
+info: {"city_total_2024": 92216, "city_total_2025": 91226, "top_decile_k": 40, "top_decile_crosstab": {"false": {"false": 362, "true": 3}, "true": {"false": 3, "true": 37}}, "tier_cutpoints_lag1": [53.0, 111.0, 191.0, 300.8000000000002]}

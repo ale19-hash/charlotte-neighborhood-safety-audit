@@ -1,0 +1,72 @@
+{
+  "source": "Violent-crime NPA summary (broad Violent Crime count)",
+  "selected_model": "random_forest",
+  "best_cv_mae_model": "random_forest",
+  "tuned_params": {
+    "baseline_last_year": {},
+    "poisson_glm": {
+      "alpha": 1.0
+    },
+    "random_forest": {
+      "min_samples_leaf": 5,
+      "max_features": 0.5
+    },
+    "gradient_boosting": {
+      "learning_rate": 0.03,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 20
+    }
+  },
+  "features": [
+    "log_lag1",
+    "log_lag2",
+    "log_lag3",
+    "log_mean3",
+    "log_hist_max",
+    "trend",
+    "lag2_missing",
+    "lag3_missing",
+    "years_observed",
+    "log_city_lag1",
+    "city_change",
+    "gun_share_lag1",
+    "robbery_share_lag1",
+    "injury_lag1",
+    "injury_lag1_missing"
+  ],
+  "rows_total": 3271,
+  "rows_dev": 2955,
+  "rows_test": 316,
+  "excluded_no_prior_year": {
+    "2016": 30,
+    "2017": 33,
+    "2018": 36,
+    "2019": 28,
+    "2020": 17,
+    "2021": 27,
+    "2022": 23,
+    "2023": 21,
+    "2024": 20,
+    "2025": 27
+  },
+  "npas_in_test": 316,
+  "city_total_2024": 7397,
+  "city_total_2025": 5824,
+  "top_decile_k": 32,
+  "top_decile_crosstab": {
+    "false": {
+      "false": 275,
+      "true": 9
+    },
+    "true": {
+      "false": 9,
+      "true": 23
+    }
+  },
+  "tier_cutpoints_lag1": [
+    4.0,
+    9.0,
+    18.0,
+    32.0
+  ]
+}

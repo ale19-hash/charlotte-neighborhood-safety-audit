@@ -1,0 +1,13 @@
+model,params,tune_mae
+poisson_glm,"{""alpha"": 0.0001}",9.417265811657328
+poisson_glm,"{""alpha"": 0.01}",9.098281541728621
+poisson_glm,"{""alpha"": 0.1}",8.282902082313285
+poisson_glm,"{""alpha"": 1.0}",7.908047256571916
+random_forest,"{""min_samples_leaf"": 5, ""max_features"": 0.5}",7.742277003911718
+random_forest,"{""min_samples_leaf"": 5, ""max_features"": 1.0}",7.783988090964418
+random_forest,"{""min_samples_leaf"": 20, ""max_features"": 0.5}",8.164908876255659
+random_forest,"{""min_samples_leaf"": 20, ""max_features"": 1.0}",8.212970042613277
+gradient_boosting,"{""learning_rate"": 0.03, ""max_leaf_nodes"": 7, ""min_samples_leaf"": 20}",8.224414589118002
+gradient_boosting,"{""learning_rate"": 0.03, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",8.35662416628323
+gradient_boosting,"{""learning_rate"": 0.1, ""max_leaf_nodes"": 7, ""min_samples_leaf"": 20}",8.510085676803675
+gradient_boosting,"{""learning_rate"": 0.1, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",8.729569102884406
