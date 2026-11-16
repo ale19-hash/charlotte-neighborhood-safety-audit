@@ -64,7 +64,3 @@ See [dashboard/README.md](dashboard/README.md) for the schema, table imports, en
 - Counts are not population-adjusted rates and are not safety ratings.
 - The two sources are not compared or summed.
 - Missing summary groups are not assumed to be zero.
-
-## AI assistance
-
-OpenAI Codex assisted with code organization, documentation, quality checks, dashboard presentation and repository setup. The student remains responsible for verifying the analysis, explaining the code and analytical choices and complying with the course AI policy.
