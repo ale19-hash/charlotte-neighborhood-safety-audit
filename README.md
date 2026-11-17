@@ -1,12 +1,14 @@
 # Rated for Whom? Auditing Neighborhood Safety Scores in Charlotte
 
-This D2 project examines how reported incident data, geographic assignment, time windows, and offense definitions can affect what a neighborhood safety score appears to show. It keeps the Charlotte-Mecklenburg Police Department incident records and the published violent-crime summary separate because their geography, time basis, and offense definitions have not been verified as comparable.
+# D2:
 
-The project reports descriptive counts. It does not create safety grades, label areas safe or unsafe, estimate unobserved population values, or claim that reported counts measure all crime.
+This D2 project examines how reported incident data, geographic assignment, time windows and offense definitions can affect what a neighborhood safety score appears to show. It keeps the Charlotte-Mecklenburg Police Department incident records and the published violent-crime summary separate because their geography, time basis, and offense definitions have not been verified as comparable.
+
+The project reports descriptive counts. It does not create safety grades, label areas safe or unsafe, estimate unobserved population values or claim that reported counts measure all crime.
 
 ## D2 deliverables
 
-- [Data note (PDF)](D2_data_note.pdf) and [editable Markdown source](D2_data_note.md)
+- [Data Report (PDF)](D2_Report.pdf)
 - [Data-preparation code and documentation](data_preparation/)
 - [Source-audit code and report](source_audit/)
 - [Exploratory plots and interpretations](d2_eda/D2_EDA_report.md)
@@ -22,9 +24,9 @@ Datasets/CMPD_Incidents.csv
 Datasets/Violent_Crime_Data.csv
 ```
 
-The preparation scripts preserve the raw files and verify their SHA-256 hashes before and after processing. The repository includes the data dictionary, cleaning log, audit results, preparation results, and the small NPA/year aggregate CSVs used to populate Supabase.
+The preparation scripts preserve the raw files and verify their SHA-256 hashes before and after processing. The repository includes the data dictionary, cleaning log, audit results, preparation results and the small NPA/year aggregate CSVs used to populate Supabase.
 
-The provenance, extraction dates, formal source dictionaries, and Neighborhood Profile Area boundary vintage remain unresolved and are documented as limitations rather than inferred.
+The provenance, extraction dates, formal source dictionaries and Neighborhood Profile Area boundary vintage remain unresolved and are documented as limitations rather than inferred.
 
 ## Reproduce data preparation
 
@@ -53,7 +55,7 @@ The scripts generate or refresh:
 
 The dashboard reads only two NPA/year aggregate tables from Supabase. It does not read the raw or cleaned incident-level files at runtime.
 
-See [dashboard/README.md](dashboard/README.md) for the schema, table imports, environment variables, local Streamlit command, and Modal deployment instructions. Keep real credentials out of the repository. The application requires `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`; it must never use a service-role key.
+See [dashboard/README.md](dashboard/README.md) for the schema, table imports, environment variables, local Streamlit command and Modal deployment instructions. Keep real credentials out of the repository. The application requires `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`; it must never use a service-role key.
 
 ## Analysis boundaries
 
@@ -62,7 +64,3 @@ See [dashboard/README.md](dashboard/README.md) for the schema, table imports, en
 - Counts are not population-adjusted rates and are not safety ratings.
 - The two sources are not compared or summed.
 - Missing summary groups are not assumed to be zero.
-
-## AI assistance
-
-OpenAI Codex assisted with code organization, documentation, quality checks, dashboard presentation, and repository setup. The student remains responsible for verifying the analysis, explaining the code and analytical choices, and complying with the course AI policy.
