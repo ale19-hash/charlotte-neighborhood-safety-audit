@@ -31,5 +31,3 @@ Thumbs.db
 .vscode/
 .idea/
 
-# D3 render intermediate
-d3_modeling/D3_modeling_note_print.html
