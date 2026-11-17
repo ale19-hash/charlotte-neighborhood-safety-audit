@@ -1,6 +1,6 @@
 # D3 modeling
 
-Compares a persistence baseline with three candidates (Poisson GLM, random forest, Poisson gradient boosting) for next-year NPA counts, using the D2 temporal holdout (development ≤ 2024, test = 2025, 2026 excluded). The modeling note is [`../D3_modeling_note.pdf`](../D3_modeling_note.pdf).
+Compares a persistence baseline with three candidates (Poisson GLM, random forest, Poisson gradient boosting) for next-year NPA counts, using the D2 temporal holdout (development ≤ 2024, test = 2025, 2026 excluded). The D3 report is [`../D3_Report.pdf`](../D3_Report.pdf).
 
 ```bash
 pip install -r d3_modeling/requirements.txt
