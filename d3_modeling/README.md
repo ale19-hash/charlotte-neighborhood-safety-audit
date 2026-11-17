@@ -1,11 +1,10 @@
 # D3 modeling
 
-Compares a persistence baseline with three candidates (Poisson GLM, random forest, Poisson gradient boosting) for next-year NPA counts, using the D2 temporal holdout (development ≤ 2024, test = 2025, 2026 excluded). The modeling note is [`../D3_modeling_note.pdf`](../D3_modeling_note.pdf) ([Markdown source](../D3_modeling_note.md)).
+Compares a persistence baseline with three candidates (Poisson GLM, random forest, Poisson gradient boosting) for next-year NPA counts, using the D2 temporal holdout (development ≤ 2024, test = 2025, 2026 excluded). The modeling note is [`../D3_modeling_note.pdf`](../D3_modeling_note.pdf).
 
 ```bash
 pip install -r d3_modeling/requirements.txt
 python d3_modeling/evaluate_models.py   # ~30 s; writes d3_modeling/results/
-python d3_modeling/build_note.py        # optional: re-render the PDF (needs pandoc + Chrome/Edge)
 ```
 
 Inputs are only the two committed aggregates in `dashboard/data/`. Validation: expanding-window rolling origin; tuning folds 2019–2021 (CMPD: 2020–2021), comparison folds 2022–2024, then one refit and one 2025 test score per model. Selection: lowest comparison-fold MAE, with a one-standard-error preference for the simpler model.
